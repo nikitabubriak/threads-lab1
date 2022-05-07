@@ -6,8 +6,8 @@ public class Ball {
     private Component canvas;
     private static final int XSIZE = 20;
     private static final int YSIZE = 20;
-    private int x = 0;
-    private int y= 0;
+    public int x = 0;
+    public int y= 0;
     private int dx = 2;
     private int dy = 2;
 
@@ -15,13 +15,11 @@ public class Ball {
         this.canvas = c;
 
         if(Math.random()<0.5){
-            x = new
-                    Random().nextInt(this.canvas.getWidth());
+            x = new Random().nextInt(this.canvas.getWidth());
             y = 0;
         }else{
             x = 0;
-            y = new
-                    Random().nextInt(this.canvas.getHeight());
+            y = new Random().nextInt(this.canvas.getHeight());
         }
     }
     public static void f(){
@@ -40,11 +38,10 @@ public class Ball {
         }
         if(x+XSIZE>=this.canvas.getWidth()){
             x = this.canvas.getWidth()-XSIZE;
-
             dx = -dx;
         }
         if(y<0){
-            y=0;
+            y = 0;
             dy = -dy;
         }
         if(y+YSIZE>=this.canvas.getHeight()){
