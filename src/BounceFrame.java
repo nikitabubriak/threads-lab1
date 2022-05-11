@@ -4,6 +4,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class BounceFrame extends JFrame {
+    private int threadCount = 8;
+    private int redThreadCount = 1;
+    private int blueThreadCount = 255;
     public static final int WIDTH = 450;
     public static final int HEIGHT = 350;
     private BallCanvas canvas;
@@ -28,13 +31,14 @@ public class BounceFrame extends JFrame {
         buttonStart.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                for(int i=0; i<8; i++){
-                    Ball b = new Ball(canvas);
-                    canvas.add(b);
-                    BallThread thread = new BallThread(b);
-                    thread.start();
-                    System.out.println("Thread name = "
-                            + thread.getName());
+//                for(int i=0; i<threadCount; i++){
+//                    AddThread(Thread.NORM_PRIORITY,Color.darkGray);
+//                }
+                for(int i=0; i<redThreadCount; i++){
+                    AddThread(Thread.MAX_PRIORITY,Color.red);
+                }
+                for(int i=0; i<blueThreadCount; i++){
+                    AddThread(Thread.MIN_PRIORITY,Color.blue);
                 }
             }
         });
@@ -55,6 +59,16 @@ public class BounceFrame extends JFrame {
     public static void Increment(){
         ballCount++;
         ballCountLabel.setText("Balls in the pocket: " + String.valueOf(ballCount));
+    }
+
+    public void AddThread(int priority, Color color){
+        Ball b = new Ball(canvas, color);
+        canvas.add(b);
+        BallThread thread = new BallThread(b);
+        thread.setPriority(priority);
+        thread.start();
+        System.out.println("Thread name = "
+                + thread.getName());
     }
 
 }

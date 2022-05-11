@@ -4,29 +4,31 @@ import java.util.Random;
 
 public class Ball {
     private Component canvas;
+    private Color color;
     private static final int XSIZE = 20;
     private static final int YSIZE = 20;
     public int x = 0;
-    public int y= 0;
+    public int y = 0;
     private int dx = 2;
     private int dy = 2;
 
-    public Ball(Component c){
+    public Ball(Component c, Color color){
         this.canvas = c;
+        this.color = color;
 
-        if(Math.random()<0.5){
-            x = new Random().nextInt(this.canvas.getWidth());
-            y = 0;
-        }else{
-            x = 0;
-            y = new Random().nextInt(this.canvas.getHeight());
-        }
+//        if(Math.random()<0.5){
+//            x = new Random().nextInt(this.canvas.getWidth());
+//            y = 0;
+//        }else{
+//            x = 0;
+//            y = new Random().nextInt(this.canvas.getHeight());
+//        }
     }
     public static void f(){
         int a = 0;
     }
     public void draw (Graphics2D g2){
-        g2.setColor(Color.darkGray);
+        g2.setColor(color);
         g2.fill(new Ellipse2D.Double(x,y,XSIZE,YSIZE));
     }
     public void move(){

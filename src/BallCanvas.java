@@ -18,7 +18,7 @@ public class BallCanvas extends JPanel {
             Ball b = balls.get(i);
             b.draw(g2);
         }
-        g2.setColor(Color.black);
-        g2.fill(new Ellipse2D.Double(BounceFrame.P.x-10,BounceFrame.P.y-10,40,40));
+//        g2.setColor(Color.black);
+//        g2.fill(new Ellipse2D.Double(BounceFrame.P.x-10,BounceFrame.P.y-10,40,40));
     }
 }
